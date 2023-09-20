@@ -1,0 +1,125 @@
+<!--
+    This final image is that of a website.  A website full of distorted pixellated images that can barely be discerned.  The website that this image calls home.
+
+    Embedded within this final image is the source code of that very website.  The formatting and code  and all the things a web browser might need to display such a site.  Or, at least, it contains most of that information
+
+    Ironically, the code below is merely a shell- one filled by the files displayed here- files stored elsewhere.
+-->
+<html>
+    <head>
+        <!--The "style" tag below indicates that the text within the tags is actually css.  It's more proper to import the css from its own dedicated .css file, but for a small, self contained project like this one the <style> tag works just fine.-->
+        <style>
+            .popup{
+                display: none;
+                position: fixed;
+                width:100%;
+                height:100%;
+                top:0px;
+                left:0px;
+                background-color: #0a0a0acc;
+            }
+            embed{
+                width:100%;
+                height:80%;
+                background-color:#99b8c4;
+                border-radius:5px;
+            }
+            img{
+                width:300px;
+                height:auto;
+                image-rendering: pixelated;
+            }
+            .content{
+                margin:auto;
+                padding-left:20px;
+                padding-right:20px;
+                padding-top:20px;
+                text-align:center;
+                width:1000px;
+                min-height:100%;
+                background-color:rgb(4, 48, 59);
+            }
+            body{
+                background-color:#02221b;
+            }
+            .imgcontainer{
+                background-color:#ffffff;
+                padding:10px;
+                display:inline-block;
+                width:300px;
+                margin:5px;
+            }
+            #popupinternal{
+                margin-top:20px;
+                color:#ffffff;
+                background-color:#19324b;
+                width:800px;
+                padding:10px;
+                text-align:center;
+                margin:auto;
+            }
+            h3{
+                font-family: 'Courier New', Courier, monospace;
+                color:white;
+            }
+
+        </style>
+    </head>
+
+
+    <!--Between the <body> tags is where the majority of html is written.  This site is relatively simple- just a section to display the images and a popup that appears when you click them.-->
+    <body>
+        <div class="content">
+            <h3>index.html</h3>
+            <div>
+                <div class="imgcontainer"><img src="data/info.txt" onclick="openPopup(this)"></div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div>
+                <div class="imgcontainer"><img src="data/street.txt" alt="street.bmp" onclick="openPopup(this)"></div>
+                <div class="imgcontainer"><img src="data/cardinal.txt" alt="cardinal.bmp" onclick="openPopup(this)"></div>
+                <div class="imgcontainer"><img src="data/machine.txt" alt="machine.bmp" onclick="openPopup(this)"></div>
+                <div class="imgcontainer"><img src="data/orange.txt" alt="orange.bmp" onclick="openPopup(this)"></div>
+                <div class="imgcontainer"><img src="data/book.txt" alt="book.bmp" onclick="openPopup(this)"></div>
+                <div class="imgcontainer"><img src="data/nectar.txt" alt="nectar.bmp" onclick="openPopup(this)"></div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div>
+                <div class="imgcontainer"><img src="data/website.txt" alt="website.bmp" onclick="openPopup(this)"></div>
+            </div>
+        </div>
+        <div id="textpopup" class="popup" onclick="closePopup()">
+            <div id="popupinternal">
+            </div>
+        </div>
+    </body>
+
+
+    <!--Between the script tags below is the javascript code that powers the site.  Again, it's not very complicated- it simply has code to open and close the popup, with the open code filling it in with the data from the file you click on.-->
+    <script>
+        textpopup=document.getElementById("textpopup");
+        internalpopup=document.getElementById("popupinternal");
+        function openPopup(image){
+            textpopup.style.display="block";
+            source=image.src;
+            internalpopup.innerHTML="";
+            title=document.createElement("h3");
+            title.innerHTML=source.split("/").pop();
+            internalpopup.appendChild(title);
+            embed=document.createElement("embed");
+            embed.src=source;
+            internalpopup.appendChild(embed);
+        }
+        function closePopup(){
+            textpopup.style.display="none";
+        }
+    </script>
+</html>
+
+<!--
+    This site and its contents were created by Henry Haak.
+-->
